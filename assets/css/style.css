@@ -1,0 +1,9 @@
+img {
+    max-width: 150px;
+    max-height: 150px;
+}
+
+
+body {
+   background-image:  url("../images/background.jpg");
+}
