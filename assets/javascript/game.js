@@ -45,10 +45,49 @@ $(document).ready(function() {
 
 
 
-
-
-
     }
+
+    console.log(characters);
+
+    //  other variables here 
+    //  keeping track of fighter / defender, turns, and ko's
+
+    var attacker;
+
+    var combatants = [];
+
+    var defender;
+
+   var turnCount =1;
+
+   var koCount = 0;
+    //  functions 
+
+var showCharacters = function(character ,renderArea) {
+    var charDiv = $(`<div class='character' data-name=' ${character.name} >`);
+    var charName = $(`<div clas='character-name'>`).text(character.name);
+    var charImage = $(`<img alt='image' class='character-image'>`).attr(`src`, character.imageUrl);
+    var charHealth = $(`<div class='character-health'>`).text(character.health);
+    charDiv.append(charName).append(charImage).append(charHealth);
+    $(renderArea).append(charDiv)
+};
+
+
+var startGame = function() {
+    for (var key in characters) {
+        showCharacters(characters[key], `#characters-selection`);
+    }
+};
+
+
+    startGame();
+
+    // updateCharacter();
+
+
+
+
+
     $(".image").on("click", function() {
         console.log("I've been clicked");
 
