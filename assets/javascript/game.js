@@ -57,7 +57,8 @@ $(document).ready(function() {
    var koCount = 0;
 
 //  functions controlling how to start / re-start / stop the game 
-
+//  use values stored in object and render them to browser
+//  these are later accessed in the event handlers 
 var showCharacters = function(character ,renderArea) {
     var charDiv = $("<div class='character' data-name='" + character.name + "'>");    
     var charName = $("<div class='character-name'>").text(character.name);
@@ -119,14 +120,16 @@ var clearMessage = function() {
 }
 
 
-        //  get the exact fighter that was chosen
+//  event handlers 
+//  handle when user clicks on character, store what character was selected 
+$("#characters-section").on("click", ".character", function(){
+    var name = $(this).attr("data-name");
+    console.log(name);
+})
 
-        var fighter = $(this).attr("fighter");
-        console.log(fighter);
+     
 
-        //  variables 
 
-        var hitPoints;
-        var attackPoints;
-        var counterAttackpoints;
+
+
     })
