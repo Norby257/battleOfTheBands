@@ -20,35 +20,41 @@
     <title>Battle of the Bands</title>
 </head>
 <body>
-
+    <div class="main-section-title">Scott Pilgrim RPG</div>
+    <div id="main-game-section">
     <!-- this is the area where you can pick a fighter -->
+    <div id="characters-section">
+        <div class="section-title">Select Your Character</div>
+    </div>
 
-   <div class="col-md-8" id="characters-selection">
-<div class="row">
-<div class="col-md-2">
-  
-<img src="assets/images/envy_adams.jpg" alt="Envy Adams" class="image" attr="data-fighter">
-<p>Envy 120 </p>
-</div>
-<div class="col-md-2">
-<img src="assets/images/gideon.jpg" alt="Gideon" class="image"  attr="data-fighter">
-<p>Gideon 140</p>
 
+    <!-- this is for out selected character -->
+    <div id="selected-character-section">
+        <div class="section-title">Your character</div>
+        <div id="selected-character"></div>
+    </div>
+
+    <!-- enemies avail to attack -->
+    <div id="available-to-attack-section">
+        <div class="section-title">Enemies</div>
+    </div>
+
+    <!-- div for fight seection -->
+    <div class="section-title">Fight section</div>
+    <div id="fight-section">
+        <button id="attack-button">Attack</button>
+    </div>
+
+    <div id="action">
+        <div class="character-section">
+            <div class="section-title">Defender</div>
+            <div id="defened"></div>
+        </div>
+    </div>
 </div>
 
-<div class="col-md-2">
-<img src="assets/images/ramona_flowers.jpg" alt="Ramona Flowers" class="image"  attr="data-fighter">
-<p>Ramona 150</p>
-
-</div>
-<div class="col-md-2">
-<img src="assets/images/scott_pilgrim.jpg" alt="Scott Pilgrim" class="image"  attr="data-fighter">
-<p>Scott 125</p>
-</div>
-
-</div>
-</div>
-
+<!-- where we append the game messages -->
+<div id="game-message"></div>
 <script src ="assets/javascript/game.js"></script>
 </body>
 </html>
