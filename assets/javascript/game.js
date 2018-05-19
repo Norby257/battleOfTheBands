@@ -59,8 +59,8 @@ $(document).ready(function() {
 //  functions controlling how to start / re-start / stop the game 
 
 var showCharacters = function(character ,renderArea) {
-    var charDiv = $(`<div class='character' data-name=' ${character.name} >`);
-    var charName = $(`<div clas='character-name'>`).text(character.name);
+    var charDiv = $("<div class='character' data-name='" + character.name + "'>");    
+    var charName = $("<div class='character-name'>").text(character.name);
     var charImage = $(`<img alt='image' class='character-image'>`).attr(`src`, character.imageUrl);
     var charHealth = $(`<div class='character-health'>`).text(character.health);
     charDiv.append(charName).append(charImage).append(charHealth);
@@ -70,7 +70,7 @@ var showCharacters = function(character ,renderArea) {
 
 var startGame = function() {
     for (var key in characters) {
-        showCharacters(characters[key], `#characters-selection`);
+        showCharacters(characters[key], "#characters-section");
     }
 };
 
@@ -110,6 +110,8 @@ $("body").append(gameState);
 $("body").append(restart);
 
 };
+
+//  empty the message section
 
 var clearMessage = function() {
     var gameMessage = $("#game-message");
