@@ -61,7 +61,8 @@ $(document).ready(function() {
    var turnCount =1;
 
    var koCount = 0;
-    //  functions 
+
+//  functions controlling how to start / re-start / stop the game 
 
 var showCharacters = function(character ,renderArea) {
     var charDiv = $(`<div class='character' data-name=' ${character.name} >`);
@@ -83,13 +84,44 @@ var startGame = function() {
     startGame();
 
     // updateCharacter();
+    var updateCharacter = function(charObj, areaRender) {
+        $(areaRender).empty();
+        showCharacters(charObj, areaRender);
+    };
 
+    var showEnemies = function(enemyArr) {
+        for (var i = 0; i < enemyArr.length; i++) {
+            showCharacters(enemyArr[i], "#available-to-attack-section");
+        }
+    }
 
+    var showMessage = function(message) {
+        var gameMessageSet = $("#game-message");
+        var newMessage = $("<div>").text(message);
+        gameMessageSet.append(newMessage);
+    };
 
+var restartGame = function(resultMessage) {
+    var restart = $("<button>Restart</button>").click(function(){
+        location.reload();
+    });
 
+    //  div that holds the result message 
 
-    $(".image").on("click", function() {
-        console.log("I've been clicked");
+var gameState = $("<div>").text(resultMessage);
+
+//  render the above to the body of hte page 
+
+$("body").append(gameState);
+$("body").append(restart);
+
+};
+
+var clearMessage = function() {
+    var gameMessage = $("#game-message");
+    gameMessage.text("");
+}
+
 
         //  get the exact fighter that was chosen
 
@@ -106,4 +138,4 @@ var startGame = function() {
 
 
 
-})
+// })
