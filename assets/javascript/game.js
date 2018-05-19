@@ -1,12 +1,6 @@
 console.log("We are linked");
-
-
 $(document).ready(function() {
-
-
     //  object to hold the characters 
-
-
     var characters = {
         "Envy Adams": {
             name: "Envy Adams",
@@ -134,8 +128,3 @@ var clearMessage = function() {
         var attackPoints;
         var counterAttackpoints;
     })
-
-
-
-
-// })
