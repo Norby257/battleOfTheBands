@@ -142,5 +142,25 @@ $("#characters-section").on("click", ".character", function(){
         showEnemies(combatants);
     }
 })
+//  on click for each enemy 
+$("#available-to-attack-section").on("click", ".character", function() {
+    //  store enemie's name 
+    var name = $(this).attr("data-name");
+    if ($("#defender").children().length === 0) {
+        defender = characters[name];
+        updateCharacter(defender, "#defender");
+        $(this).remove();
+        clearMessage();
+    }
+})
+
+//  when the attack button is clicked 
+$("#attack-button").on("click", function() {
+    if($("#defender").children().length !==0) {
+        var attackMessage = `You attacked ${defender.name} for ${attack.attack * turnCount} damage`;
+        var counterAttackMessage = `${defender.name} attacked you back for ${defender.enemyAttackBack} damage`;
+        clearMessage();
+    }
+})
 
     })
