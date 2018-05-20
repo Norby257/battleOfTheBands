@@ -57,7 +57,8 @@ $(document).ready(function() {
    var koCount = 0;
 
 //  functions controlling how to start / re-start / stop the game 
-
+//  use values stored in object and render them to browser
+//  these are later accessed in the event handlers 
 var showCharacters = function(character ,renderArea) {
     var charDiv = $("<div class='character' data-name='" + character.name + "'>");    
     var charName = $("<div class='character-name'>").text(character.name);
@@ -119,14 +120,47 @@ var clearMessage = function() {
 }
 
 
-        //  get the exact fighter that was chosen
+//  event handlers 
+//  handle when user clicks on character, store what character was selected 
+//  then determine what combatants remain 
+$("#characters-section").on("click", ".character", function(){
+    var name = $(this).attr("data-name");
+    // console.log(name);
+    if (!attacker) {
+        attacker = characters[name];
+        for (var key in characters) {
+            if (key !== name) {
+                combatants.push(characters[key]);
+            }
+        }
+        console.log(combatants);
+        //  hide the div after character is picked 
+        $("#characters-section").hide();
 
-        var fighter = $(this).attr("fighter");
-        console.log(fighter);
+        //  display chosen character, and then combatants
+        updateCharacter(attacker, "#selected-character");
+        showEnemies(combatants);
+    }
+})
+//  on click for each enemy 
+$("#available-to-attack-section").on("click", ".character", function() {
+    //  store enemie's name 
+    var name = $(this).attr("data-name");
+    if ($("#defender").children().length === 0) {
+        defender = characters[name];
+        updateCharacter(defender, "#defender");
+        $(this).remove();
+        clearMessage();
+    }
+})
 
-        //  variables 
+//  when the attack button is clicked 
+$("#attack-button").on("click", function() {
+    if($("#defender").children().length !==0) {
+        var attackMessage = `You attacked ${defender.name} for ${attack.attack * turnCount} damage`;
+        var counterAttackMessage = `${defender.name} attacked you back for ${defender.enemyAttackBack} damage`;
+        clearMessage();
+    }
+})
 
-        var hitPoints;
-        var attackPoints;
-        var counterAttackpoints;
     })
