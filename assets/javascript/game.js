@@ -122,14 +122,25 @@ var clearMessage = function() {
 
 //  event handlers 
 //  handle when user clicks on character, store what character was selected 
+//  then determine what combatants remain 
 $("#characters-section").on("click", ".character", function(){
     var name = $(this).attr("data-name");
-    console.log(name);
+    // console.log(name);
+    if (!attacker) {
+        attacker = characters[name];
+        for (var key in characters) {
+            if (key !== name) {
+                combatants.push(characters[key]);
+            }
+        }
+        console.log(combatants);
+        //  hide the div after character is picked 
+        $("#characters-section").hide();
+
+        //  display chosen character, and then combatants
+        updateCharacter(attacker, "#selected-character");
+        showEnemies(combatants);
+    }
 })
-
-     
-
-
-
 
     })
